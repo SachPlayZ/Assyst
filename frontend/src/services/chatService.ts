@@ -3,7 +3,7 @@ import { IChat, IMessage, QueryResponse } from '../@types';
 
 class ChatService {
   // Base API endpoint - adjust to your backend URL
-  private baseUrl = 'http://localhost:3001';
+  private baseUrl = process.env.BACKEND_URL;
 
   async createChat(userId?: string): Promise<IChat> {
     try {

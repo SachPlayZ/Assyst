@@ -297,7 +297,7 @@ app.post('/query', async (req: Request, res: Response): Promise<void> => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🌐 Web Research Assistant API running on http://localhost:${PORT}`);
 });
