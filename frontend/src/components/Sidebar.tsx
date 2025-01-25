@@ -23,7 +23,7 @@ const Sidebar: React.FC<SidebarProps> = ({ userDetails }) => {
       createNewChat(userDetails.email);
     }
   };
-
+  console.log(chats);
   return (
     <Drawer
       variant="permanent"
