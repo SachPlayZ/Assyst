@@ -3,7 +3,7 @@ import { IChat, IMessage, QueryResponse } from '../@types';
 
 class ChatService {
   // Base API endpoint - adjust to your backend URL
-  private baseUrl = "http://51.20.89.147:3000";
+  private baseUrl = "https://assyst-backend-b452b92ca178.herokuapp.com";
 
   async createChat(userId?: string): Promise<IChat> {
     try {

@@ -1,0 +1,33 @@
+# Dependency directories
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Production build directory
+build
+
+# Development directories and files
+.git
+.gitignore
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Testing and development artifacts
+coverage
+.eslintcache
+*.test.js
+*.spec.js
+
+# Miscellaneous system and IDE files
+.DS_Store
+.vscode
+.idea
+*.swp
+*.swo
+
+# Backup and temporary files
+*.bak
+*.tmp
