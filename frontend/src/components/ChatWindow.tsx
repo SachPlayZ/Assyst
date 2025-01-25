@@ -4,14 +4,12 @@ import {
   TextField,
   List,
   ListItem,
+  ListItemText,
   Paper,
   Typography,
   Chip,
   CircularProgress,
 } from "@mui/material";
-import ReactMarkdown from "react-markdown";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useChatContext } from "../context/ChatContext";
 
 const ChatWindow: React.FC = () => {
@@ -48,7 +46,7 @@ const ChatWindow: React.FC = () => {
   }
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+    <Box sx={{ display: "flex", flexDirection: "column", height: "93vh" }}>
       <List sx={{ flexGrow: 1, overflow: "auto", p: 2 }}>
         {currentChat.messages.map((message) => (
           <ListItem
@@ -62,7 +60,7 @@ const ChatWindow: React.FC = () => {
             <Paper
               sx={{
                 p: 1.5,
-                maxWidth: "70%",
+                maxWidth: "60%",
                 backgroundColor:
                   message.role === "user"
                     ? (theme) => theme.palette.primary.main
@@ -73,34 +71,13 @@ const ChatWindow: React.FC = () => {
                     : (theme) => theme.palette.text.primary,
               }}
             >
-              <ReactMarkdown
-                components={{
-                  code({ node, inline, className, children, ...props }) {
-                    const match = /language-(\w+)/.exec(className || "");
-                    return !inline && match ? (
-                      <SyntaxHighlighter
-                        style={materialDark}
-                        language={match[1]}
-                        PreTag="div"
-                        {...props}
-                      >
-                        {String(children).replace(/\n$/, "")}
-                      </SyntaxHighlighter>
-                    ) : (
-                      <code className={className} {...props}>
-                        {children}
-                      </code>
-                    );
-                  },
-                }}
-              >
-                {message.content}
-              </ReactMarkdown>
+              <ListItemText primary={message.content} />
             </Paper>
           </ListItem>
         ))}
       </List>
 
+      {/* Extended Search Indicator */}
       {lastQueryExtendedSearch && (
         <Box sx={{ p: 1, textAlign: "center" }}>
           <Chip

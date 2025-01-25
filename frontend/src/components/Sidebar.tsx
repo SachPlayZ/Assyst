@@ -8,9 +8,21 @@ import {
   Box,
 } from "@mui/material";
 import { useChatContext } from "../context/ChatContext";
+import { UserDetails } from "../hooks/useUserDetails"; // Adjust import path as needed
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+  userDetails: UserDetails | null;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ userDetails }) => {
   const { chats, currentChat, createNewChat, selectChat } = useChatContext();
+
+  // Handle creating a new chat with user's email
+  const handleCreateNewChat = () => {
+    if (userDetails?.email) {
+      createNewChat(userDetails.email);
+    }
+  };
 
   return (
     <Drawer
@@ -28,7 +40,7 @@ const Sidebar: React.FC = () => {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => createNewChat()}
+          onClick={handleCreateNewChat}
           sx={{ m: 2, width: "250px" }}
         >
           New Chat

@@ -1,8 +1,8 @@
 import React from "react";
-import { ThemeProvider, createTheme, CssBaseline, Box } from "@mui/material";
-import { ChatProvider } from "./context/ChatContext";
-import Sidebar from "./components/Sidebar";
-import ChatWindow from "./components/ChatWindow";
+import { ThemeProvider, createTheme } from "@mui/material";
+import ChatPage from "./pages/ChatPage";
+import { Route, Routes } from "react-router-dom";
+import Login from "./pages/LoginPage";
 
 const darkTheme = createTheme({
   palette: {
@@ -13,22 +13,10 @@ const darkTheme = createTheme({
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <ChatProvider>
-        <Box sx={{ display: "flex" }}>
-          <Sidebar />
-          <Box
-            component="main"
-            sx={{
-              flexGrow: 1,
-              height: "100vh",
-              overflow: "auto",
-            }}
-          >
-            <ChatWindow />
-          </Box>
-        </Box>
-      </ChatProvider>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/chat" element={<ChatPage />} />
+      </Routes>
     </ThemeProvider>
   );
 };
