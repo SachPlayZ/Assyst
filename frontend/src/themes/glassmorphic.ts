@@ -16,7 +16,7 @@ const palette = {
   background: {
     // Deep, layered background with subtle gradients
     default: 'linear-gradient(135deg, rgba(30,40,60,1) 0%, rgba(20,25,40,1) 100%)',
-    paper: 'rgba(40, 50, 70, 0.6)', // Glassmorphic dark background
+    paper: 'rgba(40, 50, 70, 0.46)', // Glassmorphic dark background
   },
   text: {
     primary: 'rgba(230, 235, 255, 0.9)',

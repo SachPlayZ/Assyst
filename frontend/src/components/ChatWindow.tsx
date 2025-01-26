@@ -11,6 +11,7 @@ import {
   CircularProgress,
 } from "@mui/material";
 import { useChatContext } from "../context/ChatContext";
+import ReactMarkdown from "react-markdown";
 
 const ChatWindow: React.FC = () => {
   const [inputMessage, setInputMessage] = useState("");
@@ -71,7 +72,7 @@ const ChatWindow: React.FC = () => {
                     : (theme) => theme.palette.text.primary,
               }}
             >
-              <ListItemText primary={message.content} />
+              <ReactMarkdown>{message.content}</ReactMarkdown>
             </Paper>
           </ListItem>
         ))}
