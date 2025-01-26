@@ -4,35 +4,52 @@ import ChatWindow from "../components/ChatWindow";
 import Sidebar from "../components/Sidebar";
 import { ChatProvider } from "../context/ChatContext";
 import AuthenticatedNavbar from "../components/Navbar";
-import { useUserDetails } from "../hooks/useUserDetails"; // Adjust import path as needed
+import { useUserDetails } from "../hooks/useUserDetails";
 
 const ChatPage = () => {
   const { userDetails, isLoading, handleLogout } = useUserDetails();
 
   return (
-    <>
-      <AuthenticatedNavbar
-        userDetails={userDetails}
-        isLoading={isLoading}
-        onLogout={handleLogout}
-      />
-      <CssBaseline />
-      <ChatProvider>
-        <Box sx={{ display: "flex" }}>
-          <Sidebar userDetails={userDetails} />
+    <ChatProvider>
+      <Box
+        sx={{
+          display: "flex",
+          height: "100vh", // Full viewport height
+          overflow: "hidden", // Prevent page-level scrolling
+        }}
+      >
+        {/* Sidebar remains outside of the flex-column container */}
+        <Sidebar userDetails={userDetails} />
+
+        {/* Main content area becomes a flex column */}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            flexGrow: 1,
+            overflow: "hidden", // Prevent scrolling at this level
+          }}
+        >
+          <AuthenticatedNavbar
+            userDetails={userDetails}
+            isLoading={isLoading}
+            onLogout={handleLogout}
+          />
+
+          <CssBaseline />
+
           <Box
             component="main"
             sx={{
               flexGrow: 1,
-              height: "100vh",
-              overflow: "auto",
+              overflow: "hidden", // Ensure no additional scrolling
             }}
           >
             <ChatWindow />
           </Box>
         </Box>
-      </ChatProvider>
-    </>
+      </Box>
+    </ChatProvider>
   );
 };
 

@@ -46,7 +46,7 @@ const ChatWindow: React.FC = () => {
   }
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", height: "93vh" }}>
+    <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <List sx={{ flexGrow: 1, overflow: "auto", p: 2 }}>
         {currentChat.messages.map((message) => (
           <ListItem
